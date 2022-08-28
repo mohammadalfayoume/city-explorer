@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { async } from 'jshint/src/prod-params';
+import axios from 'axios';
+
 
 
 class Map extends Component {
@@ -13,6 +15,8 @@ class Map extends Component {
         display_name : '',
         lat : '',
         lon : '',
+        errFlag : false,
+        mapFlag : false
       }
     }
 
@@ -46,8 +50,15 @@ class Map extends Component {
         <Form onSubmit={this.handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Enter the city name</Form.Label>
-        <Form.Control type="text" name="city" placeholder="Enter the city name" {} />
+        <Form.Control type="text" name="city" placeholder="Enter the city name" />
       </Form.Group>
+      <Form.Text className="text-muted">
+          <p>{this.state.display_name}</p>
+          <p>{this.state.lat}</p>
+          <p>{this.state.lon}</p>
+          {this.state.mapFlag && <img src={`https://maps.locationiq.com/v3/staticmap?key=pk.7aedc85ff3620b0d3b6865ccab5efd25&center=${this.state.lat},${this.state.lon}`}></img>}
+        {this.state.errFlag && <h4>Error : sorry something went wrong!</h4>}
+        </Form.Text>
 
       <Button variant="primary" type="submit">
         Submit
