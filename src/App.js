@@ -1,11 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-import Map from './Components/Map';
+import React, { Component } from "react";
+import Main from "./Components/Main";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
-  return (
-    <Map />
-  );
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Main />
+      </div>
+    );
+  }
 }
 
 export default App;
