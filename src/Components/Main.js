@@ -20,7 +20,7 @@ class Main extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const NameOfCity = event.target.city.value;
-    const key = "pk.d73ef3de33678cbc95d199ed9ae38bbe";
+    const key = process.env.REACT_APP_API_TOKEN;
     const URL = `https://us1.locationiq.com/v1/search?key=${key}&q=${NameOfCity}&format=json`;
 
     try {
