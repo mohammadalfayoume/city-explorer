@@ -13,7 +13,7 @@ class Main extends Component {
       lat: "",
       lon: "",
       showError: false,
-      mapFlag: false,
+      flag: false,
     };
   }
 
@@ -31,7 +31,7 @@ class Main extends Component {
         lat: responseResult.data[0].lat,
         lon: responseResult.data[0].lon,
         showError: false,
-        mapFlag: true,
+        flag: true,
       });
     } catch {
       console.log("err");
@@ -53,27 +53,31 @@ class Main extends Component {
       <div>
       <Form onSubmit={this.handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>City name</Form.Label>
+          <Form.Label>
+            <h2>City name</h2>
+            </Form.Label>
           <Form.Control
             type="text"
             name="city"
             placeholder="Enter a city name"
+            style={{textAlign:'center',width:'auto',margin:'auto'}}
           />
+          <Button variant="primary" type="submit" style={{margin:'20px'}}>
+          Search
+        </Button>
           <Form.Text className="text-muted">
-            <h4>{this.state.cityName}</h4>
-            <h4>{this.state.lat}</h4>
-            <h4>{this.state.lon}</h4>
-            {this.state.mapFlag && (
-              <img
+            {this.state.flag &&<h4>City Name: {this.state.cityName}</h4>}
+            {this.state.flag &&<h4>Latitude: {this.state.lat}</h4>}
+            {this.state.flag &&<h4>Longitude: {this.state.lon}</h4>}
+            {this.state.flag && (
+              <img style={{width:'500px', border:'10px solid black', borderRadius:'30px'}}
                 src={`https://maps.locationiq.com/v3/staticmap?key=pk.d73ef3de33678cbc95d199ed9ae38bbe&center=${this.state.lat},${this.state.lon}&zoom=18&size=300x300&format=png&maptype=roadmap&markers=icon:small-red-cutout|${this.state.lat},${this.state.lon}&markers=icon:small-red-cutout|${this.state.lat},${this.state.lon}`}
                 alt={'map'}
               />
             )}
           </Form.Text>
         </Form.Group>
-        <Button variant="primary" type="submit">
-          Search
-        </Button>
+        
         
       </Form>
       {this.state.showError && <Error error={this.errorFun} />}
