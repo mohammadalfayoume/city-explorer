@@ -21,12 +21,10 @@ class Weather extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const city = event.target.city.value;
-    console.log(city);
     const lat = event.target.lon.value;
-    console.log(lat);
     const lon = event.target.lat.value;
-    console.log(lon);
-    const URL = `http://localhost:3002/wheather?city=${city}&lat=${lat}&lon=${lon}`;
+    const url= process.env.REACT_APP_URL;
+    const URL = `${url}wheather?city=${city}&lat=${lat}&lon=${lon}`;
     console.log(URL);
 
     try {
