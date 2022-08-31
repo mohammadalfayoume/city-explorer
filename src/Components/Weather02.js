@@ -35,6 +35,12 @@ class Weather02 extends Component {
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
+        <hr></hr>
+        <Form.Label>
+        <h1>Weather Section from Weatherbit server for 16 days</h1>
+          </Form.Label>
+          <br></br>
+          <hr></hr>
           <Form.Label>
             <h2>City name</h2>
           </Form.Label>
@@ -48,11 +54,12 @@ class Weather02 extends Component {
             Explore
           </Button>
           <Form.Text className="text-muted">
-            {this.state.city.map((item) => {
+            {this.state.city.map((item,idx) => {
               return (
                 <div>
-                  <h1>{item.description}</h1>
-                  <h1>{item.date}</h1>
+                  <h2>{idx+1}</h2>
+                  <h3>Description: {item.description}</h3>
+                  <h3>Date: {item.date}</h3>
                 </div>
               );
             })}

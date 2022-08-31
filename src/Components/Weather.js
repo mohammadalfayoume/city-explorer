@@ -3,6 +3,9 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import Error from "./Error";
+import Card from "react-bootstrap/Card";
+
+
 
 class Weather extends Component {
   constructor(props) {
@@ -23,7 +26,7 @@ class Weather extends Component {
     const lat = event.target.lon.value;
     const lon = event.target.lat.value;
     const city = event.target.city.value;
-    const url= process.env.REACT_APP_URL;
+    const url = process.env.REACT_APP_URL;
     const URL = `${url}wheather?city=${city}&lat=${lat}&lon=${lon}`;
     console.log(URL);
 
@@ -90,10 +93,12 @@ class Weather extends Component {
             <Form.Text className="text-muted">
               {this.state.city.map((i) => {
                 return (
-                  <div>
-                    <h1>{i.description}</h1>
-                    <h1>{i.date}</h1>
-                  </div>
+                    <Card>
+                      <Card.Body>
+                        <h1>{i.description}</h1>
+                        <h1>{i.date}</h1>
+                      </Card.Body>
+                    </Card>
                 );
               })}
             </Form.Text>
