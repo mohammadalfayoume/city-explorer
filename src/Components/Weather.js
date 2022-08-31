@@ -24,7 +24,7 @@ class Weather extends Component {
     const lat = event.target.lon.value;
     const lon = event.target.lat.value;
     const city = event.target.city.value;
-    const url = process.env.REACT_APP_URL2;
+    const url = process.env.REACT_APP_URL;
     const URL = `${url}weather1?searchQuery=${city}&lat=${lat}&lon=${lon}`;
 
     console.log(URL);
