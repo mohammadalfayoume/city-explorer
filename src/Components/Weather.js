@@ -3,16 +3,14 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import axios from "axios";
 import Error from "./Error";
-import Card from "react-bootstrap/Card";
-
-
 
 class Weather extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      city: [],
+      data: [],
+      city: "",
       lat: "",
       lon: "",
       err: [],
@@ -26,8 +24,9 @@ class Weather extends Component {
     const lat = event.target.lon.value;
     const lon = event.target.lat.value;
     const city = event.target.city.value;
-    const url = process.env.REACT_APP_URL;
-    const URL = `${url}wheather?city=${city}&lat=${lat}&lon=${lon}`;
+    const url = process.env.REACT_APP_URL2;
+    const URL = `${url}weather1?searchQuery=${city}&lat=${lat}&lon=${lon}`;
+
     console.log(URL);
 
     try {
@@ -35,7 +34,8 @@ class Weather extends Component {
       console.log(result);
 
       this.setState({
-        city: result.data,
+        data: result.data,
+        city: city,
         lat: lat,
         lon: lon,
         showError: false,
@@ -91,23 +91,16 @@ class Weather extends Component {
               Search
             </Button>
             <Form.Text className="text-muted">
-              {this.state.city.map((i) => {
+              {this.state.data.map((i) => {
                 return (
-                    <Card>
-                      <Card.Body>
-                        <h1>{i.description}</h1>
-                        <h1>{i.date}</h1>
-                      </Card.Body>
-                    </Card>
+                  <div>
+                    <h1>{i.description}</h1>
+                    <h1>{i.date}</h1>
+                  </div>
                 );
               })}
             </Form.Text>
           </Form.Group>
-
-          {/* {city.data.map((item)=>{ */}
-          {/* <p>{this.state.city}</p> */}
-
-          {/* })} */}
         </Form>
         {this.state.showError && <Error error={this.errorFun} />}
       </div>
