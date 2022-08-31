@@ -33,6 +33,15 @@ class Movie extends Component {
     }
   };
   render() {
+    /*
+    title = item.original_title;
+    overview = item.overview;
+    average_votes = item.vote_average;
+    total_votes = item.vote_count;
+    image_url = item.poster_path;
+    popularity = item.popularity;
+    released_on = item.release_date;
+    */
     return (
       <Form onSubmit={this.handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -57,6 +66,7 @@ class Movie extends Component {
           <Form.Text className="text-muted">
             <Row xs={1} md={4} className="g-4" classN>
               {this.state.city.map((item) => {
+                console.log(item);
                 return (
                   <div className="cards">
                     <Col>
