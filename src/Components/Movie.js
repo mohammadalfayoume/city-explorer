@@ -23,7 +23,7 @@ class Movie extends Component {
 
     try {
       let result = await axios.get(URL);
-      console.log(result.data);
+      // console.log(result.data);
 
       this.setState({
         city: result.data,
@@ -66,11 +66,11 @@ class Movie extends Component {
           <Form.Text className="text-muted">
             <Row xs={1} md={4} className="g-4" classN>
               {this.state.city.map((item) => {
-                console.log(item);
+                // console.log(item);
                 return (
                   <div className="cards">
                     <Col>
-                      <Card>
+                      <Card className="card">
                         <Card.Img
                           variant="top"
                           src={
